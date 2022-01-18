@@ -1522,9 +1522,9 @@ name = "zero2prod"
 version = "0.1.0"
 dependencies = [
  "actix-http",
- "actix-rt",
  "actix-web",
  "reqwest",
+ "serde",
  "tokio",
 ]
 
