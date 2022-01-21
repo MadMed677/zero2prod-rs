@@ -8,6 +8,11 @@ pub struct DatabaseSettings {
 }
 
 impl DatabaseSettings {
+    /// Returns a full connection string which contains:
+    ///  - `postgres` specification
+    ///  - username, password
+    ///  - host, port
+    ///  - database_name
     pub fn connection_string(&self) -> String {
         format!(
             "postgres://{username}:{password}@{host}:{port}/{database_name}",
@@ -16,6 +21,20 @@ impl DatabaseSettings {
             host = self.host,
             port = self.port,
             database_name = self.database_name,
+        )
+    }
+
+    /// Returns a connection string without link to the database. It contains:
+    ///  - `postgres` specification
+    ///  - username, password
+    ///  - host, port
+    pub fn connection_string_without_db(&self) -> String {
+        format!(
+            "postgres://{username}:{password}@{host}:{port}",
+            username = self.username,
+            password = self.password,
+            host = self.host,
+            port = self.port,
         )
     }
 }
